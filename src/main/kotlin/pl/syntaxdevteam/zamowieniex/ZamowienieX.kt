@@ -17,7 +17,7 @@ class ZamowienieX : JavaPlugin() {
         instance = this
         saveDefaultConfig()
 
-
+        
         CommandManager(this).registerCommands()
 
 
@@ -29,12 +29,12 @@ class ZamowienieX : JavaPlugin() {
         discordBotManager?.start()
         server.pluginManager.registerEvents(MinecraftChatListener(this), this)
 
-        logger.info("ZamowienieX wlaczony")
+        logger.info("ZamowienieX zostało włączone!")
     }
 
     override fun onDisable() {
         discordBotManager?.stop()
-        logger.info("ZamowienieX wylaczony")
+        logger.info("ZamowienieX zostało wyłączone!")
     }
 
     companion object {
