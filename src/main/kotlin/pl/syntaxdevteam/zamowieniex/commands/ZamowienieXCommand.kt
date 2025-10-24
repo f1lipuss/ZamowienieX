@@ -11,8 +11,10 @@ import pl.syntaxdevteam.zamowieniex.util.ChatUtil
 class ZamowienieXCommand(private val plugin: ZamowienieX) : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
+        val langManager = plugin.langManager
+
         if (args.isEmpty()) {
-            sender.sendMessage(ChatUtil.colorize("\$prefix <#D070F9>Type <white>/zamowieniex help</white> <#D070F9>to see available commands."))
+            sender.sendMessage(ChatUtil.colorize(langManager.getMessage("command", "usage")))
             return true
         }
 
@@ -20,7 +22,7 @@ class ZamowienieXCommand(private val plugin: ZamowienieX) : CommandExecutor {
         {
             "help" -> sendHelpDesk(sender)
             "reload" -> handleReload(sender)
-            else -> sender.sendMessage(ChatUtil.colorize("\$prefix <#D070F9>Unknown command. Type <white>/zamowieniex help</white>"))
+            else -> sender.sendMessage(ChatUtil.colorize(langManager.getMessage("command", "unknown")))
         }
 
         return true
@@ -31,16 +33,17 @@ class ZamowienieXCommand(private val plugin: ZamowienieX) : CommandExecutor {
             if (!PermissionChecker.check(sender, PermissionChecker.Permissions.CMD_HELP))
                 return
         }
-        sender.sendMessage(ChatUtil.colorize("\n              <bold><gradient:#E040FB:#8E24AA>[ZamowienieX Help]</gradient></bold>"))
-        sender.sendMessage(ChatUtil.colorize("<gray>"))
-        sender.sendMessage(ChatUtil.colorize("<white>/uex help</white> <dark_gray>- <#D070F9>Shows this help message."))
-        sender.sendMessage(ChatUtil.colorize("<white>/uex reload</white> <dark_gray>- <#D070F9>Reloads the plugin configuration."))
+        val helpMessages = plugin.langManager.getMessageList("command", "help")
+        for (message in helpMessages) {
+            sender.sendMessage(ChatUtil.colorize(message))
+        }
     }
 
     private fun handleReload(sender: CommandSender) {
         if (sender is Player && !PermissionChecker.check(sender, PermissionChecker.Permissions.CMD_RELOAD))
             return
         plugin.reloadConfig()
-        sender.sendMessage(ChatUtil.colorize("\$prefix <#D070F9>Configuration reloaded!"))
+        plugin.langManager.reload()
+        sender.sendMessage(ChatUtil.colorize(plugin.langManager.getMessage("command", "reload", "success")))
     }
 }

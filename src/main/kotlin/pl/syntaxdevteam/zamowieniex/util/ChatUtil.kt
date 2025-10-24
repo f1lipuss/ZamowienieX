@@ -2,13 +2,17 @@ package pl.syntaxdevteam.zamowieniex.util
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.MiniMessage
+import pl.syntaxdevteam.zamowieniex.ZamowienieX
 
 object ChatUtil {
     private val miniMessage = MiniMessage.miniMessage()
-    private const val PREFIX = "<bold><gradient:#E040FB:#8E24AA>[ZEX]</gradient></bold>"
+
+    private fun getPrefix(): String {
+        return ZamowienieX.instance.langManager.getMessage("prefix")
+    }
 
     fun colorize(text: String): Component {
-        val processedText = text.replace("\$prefix", PREFIX, ignoreCase = true)
+        val processedText = text.replace("\$prefix", getPrefix(), ignoreCase = true)
         return miniMessage.deserialize(processedText)
     }
 }

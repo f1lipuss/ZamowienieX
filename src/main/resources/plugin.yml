@@ -3,8 +3,7 @@ version: '0.1-Zamowienie'
 main: pl.syntaxdevteam.zamowieniex.ZamowienieX
 api-version: '1.20'
 authors: [ f1lipuss ]
-description: Kotlin/Minecraft Learning Project
-website: syntaxdevteam.pl
+description: Plugin stworzony na testa
 
 commands:
   zamowienie:

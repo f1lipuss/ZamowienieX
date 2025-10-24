@@ -12,11 +12,13 @@ repositories {
     maven("https://repo.papermc.io/repository/maven-public/") {
         name = "papermc-repo"
     }
+    maven { url = uri("https://m2.dv8tion.net/releases") }
 }
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("net.dv8tion:JDA:5.0.0-beta.20")
 }
 
 tasks {
