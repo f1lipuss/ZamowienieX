@@ -2,7 +2,7 @@ prefix: "<bold><gradient:#E040FB:#8E24AA>[ZEX]</gradient></bold>"
 error:
   nopermission: "$prefix <red>You don't have permission for this command!"
 command:
-  usage: "$prefix <#D070F9>Type <white>/zamowieniex help</white> <#D070F9>to see available commands."
+  usage: "$prefix <#D070F9>Type <white>/zex help</white> <#D070F9>to see available commands."
   unknown: "$prefix <#D070F9>Unknown command. Type <white>/zamowieniex help</white>"
   reload:
     success: "$prefix <#D070F9>Configuration reloaded!"
@@ -10,8 +10,8 @@ command:
     - " "
     - "              <bold><gradient:#E040FB:#8E24AA>[ZamowienieX Help]</gradient></bold>"
     - "<gray>"
-    - "<white>/uex help</white> <dark_gray>- <#D070F9>Shows this help message."
-    - "<white>/uex reload</white> <dark_gray>- <#D070F9>Reloads the plugin configuration."
+    - "<white>/zex help</white> <dark_gray>- <#D070F9>Shows this help message."
+    - "<white>/zex reload</white> <dark_gray>- <#D070F9>Reloads the plugin configuration."
 discord:
   discord-to-minecraft: "<bold><#7289DA>[Discord]</#7289DA></bold> <gray>{author}:</gray> <white>{message}</white>"
   minecraft-to-discord: "**{player}**: {message}"
