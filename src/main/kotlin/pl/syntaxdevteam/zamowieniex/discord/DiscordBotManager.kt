@@ -17,13 +17,13 @@ class DiscordBotManager(private val plugin: ZamowienieX) {
         val token = plugin.config.getString("discord.token")
         val channelId = plugin.config.getString("discord.channel-id")
 
-        if (token.isNullOrEmpty() || token == "TWOJ_TOKEN_BOTA") {
-            plugin.logger.warning("Token bota Discord nie jest ustawiony w config.yml!")
+        if (token.isNullOrEmpty() || token == "YOUR_TOKEN") {
+            plugin.logger.warning("Your bot token is not set in config.yml!")
             return
         }
 
         if (channelId.isNullOrEmpty()) {
-            plugin.logger.warning("ID kanału Discord nie jest ustawione w config.yml! Most czatu nie zostanie uruchomiony.")
+            plugin.logger.warning("Discord channel ID is not set in config.yml!")
             return
         }
 
@@ -37,19 +37,19 @@ class DiscordBotManager(private val plugin: ZamowienieX) {
             chatChannel = jda?.getTextChannelById(channelId)
 
             if (chatChannel == null) {
-                plugin.logger.warning("Nie znaleziono kanału o ID: $channelId. Sprawdź config.yml.")
+                plugin.logger.warning("Channel ID not found: $channelId. Check config.yml.")
             } else {
-                plugin.logger.info("Połączono z Discordem! Most czatu jest aktywny na kanale #${chatChannel?.name}.")
+                plugin.logger.info("Connected to Discord -> #${chatChannel?.name}.")
             }
 
         } catch (e: Exception) {
-            plugin.logger.severe("Nie udało się połączyć z discordem: ${e.message}")
+            plugin.logger.severe("Failed to connect to discord: ${e.message}")
         }
     }
 
     fun stop() {
         jda?.shutdown()
-        plugin.logger.info("Bot został wylaczony z discordem")
+        plugin.logger.info("The bot has been disabled.")
     }
 
     fun sendMessageToDiscord(player: Player, message: String) {
