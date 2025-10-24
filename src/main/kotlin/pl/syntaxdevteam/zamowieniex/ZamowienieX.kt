@@ -16,9 +16,15 @@ class ZamowienieX : JavaPlugin() {
     override fun onEnable() {
         instance = this
         saveDefaultConfig()
+
+        
         CommandManager(this).registerCommands()
+
+
         langManager = LangManager(this)
         langManager.load()
+
+
         discordBotManager = DiscordBotManager(this)
         discordBotManager?.start()
         server.pluginManager.registerEvents(MinecraftChatListener(this), this)
