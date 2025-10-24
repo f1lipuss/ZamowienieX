@@ -37,7 +37,7 @@ class DiscordBotManager(private val plugin: ZamowienieX) {
             chatChannel = jda?.getTextChannelById(channelId)
 
             if (chatChannel == null) {
-                plugin.logger.warning("Channel ID not found: $channelId. Check config.yml.")
+                plugin.logger.warning("Channel ID not found: $channelId. Check config.yml!")
             } else {
                 plugin.logger.info("Connected to Discord -> #${chatChannel?.name}.")
             }
